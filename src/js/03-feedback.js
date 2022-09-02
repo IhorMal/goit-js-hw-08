@@ -21,11 +21,12 @@ function addLocalStorage(e) {
 }
 
 function populateTextarea() {
-    const storagePars = JSON.parse(localStorage.getItem("feedback-form-state"));
-   if (storagePars === null) {
-    return;
+    let storagePars = localStorage.getItem("feedback-form-state");
+   if (storagePars) {
+       storagePars = JSON.parse(storagePars);
+       Object.entries(storagePars).map(([name, value]) => {
+           data[name] = value;
+           form.elements[name].value = value;
+       })
    }
-    
-    form.elements.email.value = storagePars.email || '';
-    form.elements.message.value = storagePars.message || '';
 }
