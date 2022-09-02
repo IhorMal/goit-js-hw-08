@@ -13,7 +13,7 @@ function resetForm(e) {
     localStorage.removeItem("feedback-form-state")
 }
 
-form.addEventListener('input', throttle(addLocalStorage, 300));
+form.addEventListener('input', throttle(addLocalStorage, 500));
 
 function addLocalStorage(e) {
     data[e.target.name] = e.target.value;
